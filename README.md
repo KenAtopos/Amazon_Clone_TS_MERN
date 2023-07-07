@@ -1,1 +1,1 @@
-# Typescript MERN Amazon Clone
+# TypeScript MERN Amazon Clone

@@ -1,5 +1,5 @@
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
-import { sampleProducts } from "./data";
+import { Outlet } from "react-router-dom";
 
 function App() {
   return (
@@ -21,15 +21,8 @@ function App() {
       </header>
       <main>
         <Container className="mt-3">
-          <Row>
-            {sampleProducts.map((p) => (
-              <Col key={p.slug} sm={6} md={4} lg={3}>
-                <img src={p.image} alt={p.name} className="product-image" />
-                <h2>{p.name}</h2>
-                <p>$ {p.price}</p>
-              </Col>
-            ))}
-          </Row>
+          <Outlet />{" "}
+          {/* outlet here is a placeholder which will be filled with the component from the child routes, namely "/" or "product/:slug" here*/}
         </Container>
       </main>
       <footer>
