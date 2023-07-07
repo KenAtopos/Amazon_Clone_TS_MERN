@@ -1,7 +1,6 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import { sampleProducts } from "./data";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,7 +8,17 @@ function App() {
   return (
     <div>
       <header>TS Amazon</header>
-      <main></main>
+      <main>
+        <ul>
+          {sampleProducts.map((p) => (
+            <li key={p.slug}>
+              <img src={p.image} alt={p.name} className="product-image" />
+              <h2>{p.name}</h2>
+              <p>{p.price}</p>
+            </li>
+          ))}
+        </ul>
+      </main>
       <footer>All right reserved;</footer>
     </div>
   );
