@@ -27,8 +27,8 @@ export default function ProductPage() {
     <div>
       <Helmet>
         <title>{product.name}</title>
-      </Helmet>{" "}
-      // can put anywhere, won not affect the function
+      </Helmet>
+      {/* can put anywhere, won not affect the function */}
       <Row>
         <Col md={6}>
           <img className="large" src={product.image} alt={product.name}></img>
