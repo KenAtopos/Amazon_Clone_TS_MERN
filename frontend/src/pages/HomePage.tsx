@@ -1,7 +1,4 @@
 import { Col, Row } from "react-bootstrap";
-import { Product } from "../types/Product";
-import { useEffect, useReducer } from "react";
-import axios from "axios";
 import { getError } from "../utils";
 import { ApiError } from "../types/ApiError";
 import LoadingBox from "../components/LoadingBox";
