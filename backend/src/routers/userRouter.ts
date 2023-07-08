@@ -5,9 +5,9 @@ import { UserModel } from "../models/userModel";
 import { generateToken } from "../utils";
 
 export const userRouter = express.Router();
-// POST /api/users/login
+// POST /api/users/signin
 userRouter.post(
-  "/login",
+  "/signin",
   asyncHandler(async (req: Request, res: Response) => {
     const user = await UserModel.findOne({ email: req.body.email });
 
