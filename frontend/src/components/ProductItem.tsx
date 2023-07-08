@@ -6,9 +6,10 @@ import { useContext } from "react";
 import { Store } from "../Store";
 import { CartItem } from "../types/Cart";
 import { convertProductToCartItem } from "../utils";
+import { toast } from "react-toastify";
 
 function ProductItem({ product }: { product: Product }) {
-  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { state, dispatch: dispatch } = useContext(Store);
   const {
     cart: { cartItems },
   } = state;
@@ -21,7 +22,7 @@ function ProductItem({ product }: { product: Product }) {
       return;
     }
 
-    ctxDispatch({
+    dispatch({
       type: "CART_ADD_ITEM",
       payload: { ...item, quantity },
     });
