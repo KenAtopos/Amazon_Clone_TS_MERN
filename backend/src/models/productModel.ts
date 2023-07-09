@@ -2,7 +2,7 @@ import { modelOptions, prop, getModelForClass } from "@typegoose/typegoose";
 
 @modelOptions({ schemaOptions: { timestamps: true } })
 export class Product {
-  public _id?: string;
+  public _id?: string; // automatically created by MongoDB
 
   @prop({ required: true })
   public name!: string;

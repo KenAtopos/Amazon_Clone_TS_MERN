@@ -18,6 +18,6 @@ export const convertProductToCartItem = (product: Product): CartItem => {
     countInStock: product.countInStock,
     quantity: 1,
   };
-  
+
   return cartItem;
 };
