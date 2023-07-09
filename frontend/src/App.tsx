@@ -192,10 +192,7 @@ function App() {
           ) : (
             categories!.map((category) => (
               <ListGroup.Item action key={category}>
-                <LinkContainer
-                  to={{ pathname: "/search", search: `category=${category}` }}
-                  onClick={() => setSidebarIsOpen(false)}
-                >
+                <LinkContainer to={"#"} onClick={() => setSidebarIsOpen(false)}>
                   <Nav.Link>{category}</Nav.Link>
                 </LinkContainer>
               </ListGroup.Item>
