@@ -1,7 +1,8 @@
 import cors from "cors";
 import dotenv from "dotenv";
-import express from "express";
+import express, { Request, Response } from "express";
 import mongoose from "mongoose";
+import path from "path";
 import { productRouter } from "./routers/productRouter";
 import { seedRouter } from "./routers/seedRouter";
 import { userRouter } from "./routers/userRouter";
@@ -41,7 +42,14 @@ app.use("/api/orders", orderRouter);
 app.use("/api/users", userRouter);
 app.use("/api/keys", keyRouter);
 
-const PORT = 4000;
+// server frontend through backend
+app.use(express.static(path.join(__dirname, "../../frontend/dist"))); // server the static files
+app.get("*", (req: Request, res: Response) =>
+  res.sendFile(path.join(__dirname, "../../frontend/dist/index.html"))
+); // The "*" means that this route will match any route that hasn't already been matched by previous route handlers.
+
+const PORT: number = parseInt((process.env.PORT || "4000") as string, 10);
+
 app.listen(PORT, () => {
   console.log(`server started at http://localhost:${PORT}`);
 });
