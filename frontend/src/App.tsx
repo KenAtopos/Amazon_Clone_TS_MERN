@@ -68,7 +68,7 @@ function App() {
             <Navbar.Collapse>
               <Nav className="w-100 justify-content-end">
                 <Link
-                  to="#"
+                  to="/"
                   className="nav-link header-link"
                   onClick={switchModeHandler}
                 >
@@ -92,7 +92,7 @@ function App() {
                     <NavDropdown.Divider />
                     <Link
                       className="dropdown-item"
-                      to="#signout"
+                      to="/signout"
                       onClick={signoutHandler}
                     >
                       {" "}
@@ -131,14 +131,14 @@ function App() {
           <div className="sub-header">
             <div className="d-flex">
               <Link
-                to="#"
+                to="/"
                 className="nav-link header-link p-1"
                 onClick={() => setSidebarIsOpen(!sidebarIsOpen)}
               >
                 <i className="fas fa-bars"></i> All
               </Link>
               {["Todays Deal", "Gifts", "On Sale"].map((x) => (
-                <Link key={x} className="nav-link header-link p-1 px-3" to="#">
+                <Link key={x} className="nav-link header-link p-1 px-3" to="/">
                   {x}
                 </Link>
               ))}
@@ -192,7 +192,7 @@ function App() {
           ) : (
             categories!.map((category) => (
               <ListGroup.Item action key={category}>
-                <LinkContainer to="#" onClick={() => setSidebarIsOpen(false)}>
+                <LinkContainer to="/" onClick={() => setSidebarIsOpen(false)}>
                   <Nav.Link>{category}</Nav.Link>
                 </LinkContainer>
               </ListGroup.Item>
