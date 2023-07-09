@@ -20,3 +20,23 @@ export const useSigninMutation = () =>
   });
 
 // useMutation here is a hook from the React-Query library, it is used to handle the mutation queries, which typically are post, put, patch, delete etc.
+
+export const useSignupMutation = () =>
+  useMutation({
+    mutationFn: async ({
+      name,
+      email,
+      password,
+    }: {
+      name: string;
+      email: string;
+      password: string;
+    }) =>
+      (
+        await apiClient.post<UserInfo>(`api/users/signup`, {
+          name,
+          email,
+          password,
+        })
+      ).data,
+  });
