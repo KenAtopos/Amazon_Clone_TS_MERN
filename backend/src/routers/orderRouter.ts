@@ -1,10 +1,37 @@
 import express, { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
-import { OrderModel } from "../models/orderModel";
+import { Order, OrderModel } from "../models/orderModel";
 import { Product } from "../models/productModel";
 import { isAuth } from "../utils";
 
 export const orderRouter = express.Router();
+
+{
+  /* the order of the middleware is important as Express will execute the middleware functions in the order they are declared */
+  /* if put after the /:id, Express will interpret "mine" as ":id" which will cost the error */
+}
+
+orderRouter.get(
+  "/mine",
+  isAuth,
+  asyncHandler(async (req: Request, res: Response) => {
+    const orders = await OrderModel.find({ user: req.user._id });
+    res.send(orders);
+  })
+);
+
+orderRouter.get(
+  "/:id",
+  isAuth,
+  asyncHandler(async (req: Request, res: Response) => {
+    const order = await OrderModel.findById(req.params.id);
+    if (order) {
+      res.json(order);
+    } else {
+      res.status(404).json({ message: "Order Not Found" });
+    }
+  })
+);
 
 orderRouter.post(
   "/",
@@ -25,22 +52,9 @@ orderRouter.post(
         taxPrice: req.body.taxPrice,
         totalPrice: req.body.totalPrice,
         user: req.user._id, // comes from isAuth middleware
-      });
+      } as Order);
 
       res.status(201).json({ message: "Order Created", order: createdOrder });
-    }
-  })
-);
-
-orderRouter.get(
-  "/:id",
-  isAuth,
-  asyncHandler(async (req: Request, res: Response) => {
-    const order = await OrderModel.findById(req.params.id);
-    if (order) {
-      res.json(order);
-    } else {
-      res.status(404).json({ message: "Order Not Found" });
     }
   })
 );
