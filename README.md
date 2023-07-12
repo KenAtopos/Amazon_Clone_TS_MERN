@@ -2,7 +2,7 @@
 
 This is a full-featured, robust, and production-ready web application developed using MongoDB, Express.js, React.js, Node.js (commonly known as the MERN stack) enhanced with TypeScript for strong typing and bundled with Vite for ultra-fast bundling and hot module replacement.
 
-### Here is the [link](ts-mern-amazon-clone.onrender.com/)
+### Here is the [link](https://ts-mern-amazon-clone.onrender.com/)
 
 ## Key Features:
 
